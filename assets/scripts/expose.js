@@ -9,8 +9,6 @@ var expose_button;
 
 
 function init() {
-  // TODO
-
 
   const nodeList = document.getElementById("expose").childNodes
   for (let i = 0; i < nodeList.length; i++) 
