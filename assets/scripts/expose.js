@@ -37,8 +37,20 @@ function init() {
   {
 
   }
+  
+  expose_button.addEventListener("click", on_play)
+  {
+
+  }
 
 }
+
+function on_play() {
+  console.log("on_play");
+  expose_audio.volume = document.getElementById("volume").value/100.0;
+  expose_audio.play();
+}
+
 function on_volum_changed() {
   //console.log("on_volum_changed");
   var x = document.getElementById("volume").value;
