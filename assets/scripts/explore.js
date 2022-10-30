@@ -47,22 +47,22 @@ function on_play() {
   const synth = window.speechSynthesis;
   const utterThis = new SpeechSynthesisUtterance(inputtext);
   
-  // utterThis.addEventListener('end', (event) => {
-  //   console.log("utterThis.onend");
-  //   explore_img.src="assets/images/smiling.png";
-  //   document.getElementById("text-to-speak").value="";
-  // });
+  utterThis.addEventListener('end', (event) => {
+    console.log("utterThis.onend");
+    explore_img.src="assets/images/smiling.png";
+    document.getElementById("text-to-speak").value="";
+  });
 
-  // utterThis.addEventListener('start', (event) => {
-  //   console.log("utterThis.onstart");
-  //   explore_img.src="assets/images/smiling-open.png";
-  // });
+  utterThis.addEventListener('start', (event) => {
+    console.log("utterThis.onstart");
+    explore_img.src="assets/images/smiling-open.png";
+  });
   
-  // utterThis.addEventListener('error', (event) => { 
-  //   console.log("utterThis.error");
-  //   explore_img.src="assets/images/smiling.png";
-  //   document.getElementById("text-to-speak").value="";
-  // });
+  utterThis.addEventListener('error', (event) => { 
+    console.log("utterThis.error");
+    explore_img.src="assets/images/smiling.png";
+    document.getElementById("text-to-speak").value="";
+  });
 
   const voices = speechSynthesis.getVoices();
   for (let i = 0; i < voices.length ; i++) 
