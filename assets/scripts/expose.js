@@ -7,6 +7,7 @@ var expose_img;
 var expose_audio;
 var expose_button;
 
+
 function init() {
   // TODO
 
@@ -43,16 +44,25 @@ function init() {
 
   }
 
+  
+
 }
 
 function on_play() {
+
   console.log("on_play");
   expose_audio.volume = document.getElementById("volume").value/100.0;
   expose_audio.play();
+
+  if(document.getElementById("horn-select").value == "party-horn")
+  {
+    const jsConfetti = new JSConfetti();
+    jsConfetti.addConfetti();
+  }
 }
 
 function on_volum_changed() {
-  //console.log("on_volum_changed");
+  console.log("on_volum_changed");
   var x = document.getElementById("volume").value;
   //console.log(x);
   const nodeList = document.getElementById("volume-controls").childNodes
@@ -82,7 +92,7 @@ function on_volum_changed() {
 }
 
 function on_horn_select_changed() {
-  //console.log("on_horn_select_changed");
+  console.log("on_horn_select_changed");
   var x = document.getElementById("horn-select").value;
 
   if(x == "air-horn")
