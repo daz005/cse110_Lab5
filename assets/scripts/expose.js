@@ -2,8 +2,31 @@
 
 window.addEventListener('DOMContentLoaded', init);
 
+
+var expose_img;
+var expose_audio;
+var expose_button;
+
 function init() {
   // TODO
+
+
+  const nodeList = document.getElementById("expose").childNodes
+  for (let i = 0; i < nodeList.length; i++) 
+  {
+    if (nodeList[i].nodeName == "IMG")
+    {
+      expose_img = nodeList[i];
+    }
+    else if (nodeList[i].nodeName == "AUDIO")
+    {
+      expose_audio = nodeList[i];
+    }
+    else if (nodeList[i].nodeName == "BUTTON")
+    {
+      expose_button = nodeList[i];
+    }
+  }
 
   document.getElementById("horn-select").addEventListener("change", on_horn_select_changed)
   {
@@ -20,7 +43,6 @@ function on_volum_changed() {
   //console.log("on_volum_changed");
   var x = document.getElementById("volume").value;
   //console.log(x);
-  
   const nodeList = document.getElementById("volume-controls").childNodes
   for (let i = 0; i < nodeList.length; i++) 
   {
@@ -50,27 +72,24 @@ function on_volum_changed() {
 function on_horn_select_changed() {
   //console.log("on_horn_select_changed");
   var x = document.getElementById("horn-select").value;
-  //console.log(x);
-  const nodeList = document.getElementById("expose").childNodes
-  for (let i = 0; i < nodeList.length; i++) 
+
+  if(x == "air-horn")
+  { 
+    expose_img.src="assets/images/air-horn.svg";
+    expose_audio.src="assets/audio/air-horn.mp3";
+  }
+  else if(x == "car-horn")
   {
-    if (nodeList[i].nodeName == "IMG")
-    {
-      if(x == "air-horn")
-      { 
-          nodeList[i].src="assets/images/air-horn.svg";
-      }
-      else if(x == "car-horn")
-      {
-        nodeList[i].src="assets/images/car-horn.svg";
-      }
-      else if(x == "party-horn")
-      {
-        nodeList[i].src="assets/images/party-horn.svg";
-      }else
-      {
-        nodeList[i].src="assets/images/no-image.png";
-      }
-    }
+    expose_img.src="assets/images/car-horn.svg";
+    expose_audio.src="assets/audio/car-horn.mp3";
+  }
+  else if(x == "party-horn")
+  {
+    expose_img.src="assets/images/party-horn.svg";
+    expose_audio.src="assets/audio/party-horn.mp3";
+  }else
+  {
+    expose_img.src="assets/images/no-image.png";
+    expose_audio.src="";
   }
 }
